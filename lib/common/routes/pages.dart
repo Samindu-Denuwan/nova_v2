@@ -4,6 +4,7 @@ import 'package:nova_v2/common/middlewares/middlewares.dart';
 
 import 'package:get/get.dart';
 
+import '../../pages/sign_in/index.dart';
 import '../../pages/welcome/index.dart';
 import 'routes.dart';
 
@@ -21,12 +22,13 @@ class AppPages {
       binding: WelcomeBinding(),
     ),
 
-      /*
+
     GetPage(
       name: AppRoutes.SIGN_IN,
-      page: () => SignInPage(),
+      page: () => const SignInPage(),
       binding: SignInBinding(),
     ),
+    /*
 
     // check if needed to login or not
     GetPage(
