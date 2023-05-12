@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "439791773449",
+    "project_id": "flutter-nova-v2",
+    "storage_bucket": "flutter-nova-v2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439791773449:android:f1b2ae5d9c24dedd2995d8",
+        "android_client_info": {
+          "package_name": "com.denuwan.nova_v2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439791773449-vhubpd70fjfo5iqg05513vkh1l35bno9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.denuwan.nova_v2",
+            "certificate_hash": "751306d45b479db2f0e07f18c941de572f99b75c"
+          }
+        },
+        {
+          "client_id": "439791773449-dch07ksgeo2kpk4nbbtc9j33ktm1shif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIiT6g4HerH4zDGIhIsVUvcbxGGjND4Vo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439791773449-dch07ksgeo2kpk4nbbtc9j33ktm1shif.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "439791773449-0ejp0a49erudvp4sm3ltj8eujru5rv33.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.denuwan.novaV2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
