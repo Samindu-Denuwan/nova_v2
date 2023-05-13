@@ -4,7 +4,7 @@ class UserData {
   final String? id;
   final String? name;
   final String? email;
-  final String? photourl;
+  late final String? photourl;
   final String? location;
   final String? fcmtoken;
   final Timestamp? addtime;

@@ -40,7 +40,7 @@ class SignInController extends GetxController{
        String displayName = user.displayName ?? user.email;
        String email = user.email;
        String id = user.id;
-       String photoUrl = user.photoUrl ?? "";
+       String photoUrl = user.photoUrl ?? "https://headrick.com.do/wp-content/uploads/2020/09/no-user-image-square.jpg";
        UserLoginResponseEntity userProfile = UserLoginResponseEntity();
        userProfile.email = email;
        userProfile.accessToken = id;
@@ -48,7 +48,7 @@ class SignInController extends GetxController{
        userProfile.photoUrl = photoUrl;
 
        UserStore.to.saveProfile(userProfile);
-       Get.snackbar("Success", "Successfuly user sign in\nEmail : $email");
+
        
        //Save user data to firestore
        var userbase = await db.collection("users").withConverter(
