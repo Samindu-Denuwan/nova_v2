@@ -4,6 +4,7 @@ import 'package:nova_v2/common/middlewares/middlewares.dart';
 import 'package:get/get.dart';
 
 import '../../pages/application/index.dart';
+import '../../pages/chat/index.dart';
 import '../../pages/contact/index.dart';
 import '../../pages/sign_in/index.dart';
 import '../../pages/welcome/index.dart';
@@ -45,13 +46,19 @@ class AppPages {
         name: AppRoutes.Contact,
         page: () => const ContactPage(),
         binding: ContactBinding()),
+
+    GetPage(
+        name: AppRoutes.Chat,
+        page: () => const ChatPage(),
+        binding: ChatBinding()),
 /*
   //消息
     GetPage(name: AppRoutes.Message, page: () => MessagePage(), binding: MessageBinding()),
     //我的
     GetPage(name: AppRoutes.Me, page: () => MePage(), binding: MeBinding()),
     //聊天详情
-    GetPage(name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
+
+
 
     GetPage(name: AppRoutes.Photoimgview, page: () => PhotoImgViewPage(), binding: PhotoImgViewBinding()),*/
   ];

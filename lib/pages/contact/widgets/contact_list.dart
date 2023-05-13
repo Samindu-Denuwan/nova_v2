@@ -17,9 +17,20 @@ class ContactList extends GetView<ContactController> {
   Widget BuildListItem(UserData item){
 
     return Container(
-      padding: EdgeInsets.only(top: 15.w, left: 15.w, right: 15.w),
+
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(20.h)),
+        color: Colors.white,
+      ),
+      margin: EdgeInsets.only(top: 8.w, left: 8.w, right: 8.w),
+      padding: EdgeInsets.only(top: 10.w, left: 10.w, right: 10.w, bottom: 10.w),
       child: InkWell(
-        onTap: (){},
+        onTap: (){
+          if(item.id != null){
+            controller.goChat(item);
+          }
+
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,18 +40,33 @@ class ContactList extends GetView<ContactController> {
               child: SizedBox(
                 width: 60.w,
                 height: 60.w,
-                child: CachedNetworkImage(imageUrl: "${item.photourl}"),
+               // child: CachedNetworkImage(imageUrl: "${item.photourl}"),
+                child: CachedNetworkImage(
+                  imageUrl: "${item.photourl}",
+                  imageBuilder: (context, imageProvider) => Container(
+                    height: 60.w,
+                    width: 60.w,
+                    margin: null,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(60.w)),
+                        image: DecorationImage(image: imageProvider,fit: BoxFit.cover)
+
+                    ),
+                  ),
+                  errorWidget: (context, url, error) =>
+                  const Image(image: AssetImage("assets/images/feature-1.png")) ,
+                ),
 
               ),
             ),
             Container(
-              width: 250.w,
+              width: 240.w,
               padding: EdgeInsets.only(top: 20.w, left: 0.w, right: 0.w, bottom: 0.w),
-              decoration: const BoxDecoration(
-                border: Border(
-               bottom: BorderSide(width: 1, color: Color(0xffe5e5e5))
-              ),
-            ),
+            //   decoration: const BoxDecoration(
+            //     border: Border(
+            //    bottom: BorderSide(width: 1, color: Color(0xffe5e5e5))
+            //   ),
+            // ),
               child: Row(
                 children: [
                   SizedBox(

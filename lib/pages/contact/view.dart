@@ -30,6 +30,7 @@ class ContactPage extends GetView<ContactController> {
     return  Scaffold(
           appBar: _buildAppBar(),
       body: const ContactList(),
+      backgroundColor: Colors.grey.shade200,
     );
   }
 }
