@@ -18,7 +18,7 @@ Widget ChatLeftItem(Msgcontent item){
             ),
           child: Container(
             margin: EdgeInsets.only(right: 10.w, top: 0.w),
-            padding: EdgeInsets.only(top: 10.w, left: 20.w, right: 20.w),
+            padding: EdgeInsets.only(top: 10.w, left: 20.w, right: 20.w, bottom: 10.w),
             decoration:  BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -35,13 +35,16 @@ Widget ChatLeftItem(Msgcontent item){
                     constraints: BoxConstraints(
                     maxWidth: 90.w,
 
+
                 ),
                   child: GestureDetector(
                     onTap: (){
                       
                     },
                     child: CachedNetworkImage(
-                        imageUrl: "{$item.content}"),
+                        imageUrl: "${item.content}"),
+
+
                   ),
                 )
 

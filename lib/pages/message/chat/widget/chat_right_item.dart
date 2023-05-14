@@ -16,7 +16,7 @@ Widget ChatRightItem(Msgcontent item){
             ),
           child: Container(
             margin: EdgeInsets.only(right: 10.w, top: 0.w),
-            padding: EdgeInsets.only(top: 15.w, left: 20.w, right: 20.w),
+              padding: EdgeInsets.only(top: 10.w, left: 20.w, right: 20.w, bottom: 10.w),
             decoration:  BoxDecoration(
               gradient: const LinearGradient(colors: [
                 Color.fromARGB(255, 176, 106, 231),
@@ -36,7 +36,8 @@ Widget ChatRightItem(Msgcontent item){
             ),):
                 ConstrainedBox(
                     constraints: BoxConstraints(
-                    maxWidth: 90.w,
+                      maxWidth: 150.w,
+
 
                 ),
                   child: GestureDetector(
@@ -44,7 +45,7 @@ Widget ChatRightItem(Msgcontent item){
                       
                     },
                     child: CachedNetworkImage(
-                        imageUrl: "{$item.content}"),
+                        imageUrl: "${item.content}"),
                   ),
                 )
 

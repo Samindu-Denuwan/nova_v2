@@ -105,6 +105,12 @@ class ChatPage extends GetView<ChatController> {
 
   void _showPicker(context){
     showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10.w),
+          topRight: Radius.circular(10.w),
+        )),
+        barrierColor: Colors.black.withOpacity(0.5),
         context: context,
         builder: (BuildContext bc){
           return SafeArea(
@@ -113,7 +119,10 @@ class ChatPage extends GetView<ChatController> {
                   ListTile(
                     leading: Icon(Icons.photo_library),
                     title: Text("Gallery"),
-                    onTap: (){},
+                    onTap: (){
+                      controller.imgFromGallery() ;
+                      Get.back();
+                    },
                   ),
                   ListTile(
                     leading: Icon(Icons.photo_camera),
@@ -125,9 +134,6 @@ class ChatPage extends GetView<ChatController> {
         }
     );
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -192,10 +198,10 @@ class ChatPage extends GetView<ChatController> {
                                           color: AppColors.primaryElement,
                                           size: 30,),
                                         onPressed: (){
-                                          controller.sendMessage();
-                                          Get.snackbar(" Message Delivered","Message Sent Successfuly!",
-                                            icon: const Icon(Icons.message_rounded),
-                                          );
+
+                                            controller.sendMessage();
+
+
                                         },
                                       ),
                                     ),
