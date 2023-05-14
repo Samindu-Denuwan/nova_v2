@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:nova_v2/common/values/colors.dart';
 import 'package:nova_v2/common/widgets/toast.dart';
+import 'package:nova_v2/pages/message/chat/widget/chat_list.dart';
 
 import 'controller.dart';
 import 'dart:math' as math;
@@ -102,6 +103,29 @@ class ChatPage extends GetView<ChatController> {
     );
   }
 
+  void _showPicker(context){
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc){
+          return SafeArea(
+              child: Wrap(
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.photo_library),
+                    title: Text("Gallery"),
+                    onTap: (){},
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.photo_camera),
+                    title: Text("Camera"),
+                    onTap: (){},
+                  ),
+                ],
+              ));
+        }
+    );
+  }
+
 
 
 
@@ -110,12 +134,12 @@ class ChatPage extends GetView<ChatController> {
     return  Scaffold(
          appBar: _buildAppBar(),
       backgroundColor: Colors.grey.shade100,
-      body: Obx(
-              () => SafeArea(
+      body:  SafeArea(
                   child: ConstrainedBox(
                     constraints:const BoxConstraints.expand() ,
                     child: Stack(
                       children: [
+                        const ChatList(),
                         Positioned(
                             bottom: 0.h,
                             height: 60.h,
@@ -126,11 +150,13 @@ class ChatPage extends GetView<ChatController> {
                               color: AppColors.primaryBackground,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                                 children: [
                                   SizedBox(
                                     width: 225.w,
-                                    height: 50.h,
+                                    height: 60.h,
                                     child: TextField(
+                                      textInputAction:  TextInputAction.unspecified ,
                                       keyboardType: TextInputType.multiline,
                                       maxLines: 3,
                                       controller: controller.textController,
@@ -163,7 +189,7 @@ class ChatPage extends GetView<ChatController> {
                                       angle: 330 *math.pi /180,
                                       child: IconButton(
                                         icon: const Icon(Icons.send_rounded,
-                                          color: Colors.purple,
+                                          color: AppColors.primaryElement,
                                           size: 30,),
                                         onPressed: (){
                                           controller.sendMessage();
@@ -176,11 +202,11 @@ class ChatPage extends GetView<ChatController> {
                                   ),
 
                                   Container(
-                                    height: 35.h,
-                                    width: 35.w,
+                                    height: 30.h,
+                                    width: 30.w,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(35.w),
-                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(30.w),
+                                          color: AppColors.primaryElement,
                                           boxShadow: [
                                             BoxShadow(
                                                 color: Colors.grey.shade500,
@@ -193,12 +219,13 @@ class ChatPage extends GetView<ChatController> {
                                     margin: const EdgeInsets.only( right: 15),
                                     child: GestureDetector(
                                       child: Icon(Icons.add,
-                                        color: Colors.purple.shade400,
-                                        size:25.w,
+                                        color: Colors.white,
+                                        size:22.w,
                                       ),
                                       onTap: (){
                                         //send Images
-                                        controller.goMore();
+                                        _showPicker(context);
+                                        //controller.goMore();
                                       },
                                     ),
 
@@ -210,69 +237,70 @@ class ChatPage extends GetView<ChatController> {
 
 
                             )),
-                        controller.state.more_status.value?  Positioned(
-                            right: 15.w,
-                            bottom: 70.h,
-                            height: 100.h,
-                            width: 40.w,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                GestureDetector(
-                                  child: Container(
-                                    height: 40.h,
-                                    width: 40.h,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(40.w),
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: Colors.grey.shade200,
-                                              spreadRadius: 2,
-                                              blurRadius: 2,
-                                              offset: const Offset(1, 1)
-                                          ),
-                                        ]
-                                    ),
-                                    child: Icon(Icons.camera_alt_outlined,size: 19.sp,
-                                      color: Colors.purple.shade500,),
-                                  ),
-                                  onTap: (){
-                                    toastInfo(msg: "Camera");
-                                  },
-                                ),
-                                GestureDetector(
-                                  child: Container(
-                                    height: 40.h,
-                                    width: 40.h,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(40.w),
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: Colors.grey.shade200,
-                                              spreadRadius: 2,
-                                              blurRadius: 2,
-                                              offset: const Offset(1, 1)
-                                          ),
-                                        ]
-                                    ),
-                                    child: Icon(Icons.photo_outlined,size: 19.sp,
-                                      color: Colors.purple.shade500,),
-                                  ),
-                                  onTap: (){
-                                    toastInfo(msg: "Gallery");
-                                  },
-                                ),
 
-                              ],
-                            )):Container(),
+                        // controller.state.more_status.value?  Positioned(
+                        //     right: 15.w,
+                        //     bottom: 70.h,
+                        //     height: 100.h,
+                        //     width: 40.w,
+                        //     child: Column(
+                        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //       children: [
+                        //         GestureDetector(
+                        //           child: Container(
+                        //             height: 40.h,
+                        //             width: 40.h,
+                        //             decoration: BoxDecoration(
+                        //                 borderRadius: BorderRadius.circular(40.w),
+                        //                 color: Colors.white,
+                        //                 boxShadow: [
+                        //                   BoxShadow(
+                        //                       color: Colors.grey.shade200,
+                        //                       spreadRadius: 2,
+                        //                       blurRadius: 2,
+                        //                       offset: const Offset(1, 1)
+                        //                   ),
+                        //                 ]
+                        //             ),
+                        //             child: Icon(Icons.camera_alt_outlined,size: 19.sp,
+                        //               color: AppColors.primaryElement,),
+                        //           ),
+                        //           onTap: (){
+                        //             toastInfo(msg: "Camera");
+                        //           },
+                        //         ),
+                        //         GestureDetector(
+                        //           child: Container(
+                        //             height: 40.h,
+                        //             width: 40.h,
+                        //             decoration: BoxDecoration(
+                        //                 borderRadius: BorderRadius.circular(40.w),
+                        //                 color: Colors.white,
+                        //                 boxShadow: [
+                        //                   BoxShadow(
+                        //                       color: Colors.grey.shade200,
+                        //                       spreadRadius: 2,
+                        //                       blurRadius: 2,
+                        //                       offset: const Offset(1, 1)
+                        //                   ),
+                        //                 ]
+                        //             ),
+                        //             child: Icon(Icons.photo_outlined,size: 19.sp,
+                        //               color: AppColors.primaryElement,),
+                        //           ),
+                        //           onTap: (){
+                        //             toastInfo(msg: "Gallery");
+                        //           },
+                        //         ),
+                        //
+                        //       ],
+                        //     )):Container(),
 
                       ],
 
                     ),
 
-                  ))),
+                  )),
     );
   }
 }

@@ -36,7 +36,7 @@ class ContactList extends GetView<ContactController> {
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(60.w),
-                    color: Colors.white,
+                    color: Colors.transparent,
                     boxShadow: [
                       BoxShadow(
                           color: Colors.grey.shade200,

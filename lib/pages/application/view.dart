@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nova_v2/common/values/values.dart';
 import 'package:nova_v2/pages/contact/index.dart';
+import 'package:nova_v2/pages/home/index.dart';
 
 import 'controller.dart';
 
@@ -14,7 +15,7 @@ class ApplicationPage extends GetView<ApplicationController> {
       controller: controller.pageController,
       onPageChanged: controller.handlePageChanged,
       children: const[
-        Center(child: Text("Chat")),
+        MessagePage(),
         ContactPage(),
 
         Center(child: Text("Profile")),

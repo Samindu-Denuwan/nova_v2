@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'controller.dart';
+import '../home/controller.dart';
 
-class ProfilePage extends GetView<ProfileController> {
-  const ProfilePage({Key? key}) : super(key: key);
+class MessagePage extends GetView<MessageController> {
+  const MessagePage({Key? key}) : super(key: key);
 
 
 

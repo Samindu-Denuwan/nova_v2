@@ -10,9 +10,9 @@ import 'state.dart';
 class ChatController extends GetxController {
   final state = ChatState();
 
-  void goMore(){
-    state.more_status.value =state.more_status.value? false:true;
-  }
+  // void goMore(){
+  //   state.more_status.value =state.more_status.value? false:true;
+  // }
 
   ChatController();
   var doc_id =null;
@@ -21,6 +21,7 @@ class ChatController extends GetxController {
   FocusNode contentNode = FocusNode();
   final user_id = UserStore.to.token;
   final db = FirebaseFirestore.instance;
+  var listener;
 
   @override
   void onInit() {
@@ -56,6 +57,42 @@ class ChatController extends GetxController {
       "last_msg":sendContent,
       "last_time": Timestamp.now(),
     });
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+
+   var messages = db.collection("messages").doc(doc_id).collection("msglist").withConverter(
+        fromFirestore: Msgcontent.fromFirestore,
+        toFirestore: (Msgcontent msgcontent, options)=> msgcontent.toFirestore()
+    ).orderBy("addtime", descending:true );
+    state.msgcontentList.clear();
+    listener = messages.snapshots().listen((event) {
+      for(var change in event.docChanges){
+        switch(change.type){
+          case DocumentChangeType.added:
+            if(change.doc.data()!=null){
+              state.msgcontentList.insert(0, change.doc.data()!);
+            }
+            break;
+          case DocumentChangeType.modified:
+            break;
+          case DocumentChangeType.removed:
+            break;
+        }
+      }
+    },
+      onError: (error)=> print("Listen Failed: $error")
+    );
+  }
+
+  @override
+  void dispose() {
+
+    msgScrolling.dispose();
+    listener.cancel();
+    super.dispose();
   }
 
 }
