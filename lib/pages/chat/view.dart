@@ -110,79 +110,169 @@ class ChatPage extends GetView<ChatController> {
     return  Scaffold(
          appBar: _buildAppBar(),
       backgroundColor: Colors.grey.shade100,
-      body: SafeArea(
-          child: ConstrainedBox(
-            constraints:const BoxConstraints.expand() ,
-            child: Stack(
-              children: [
-                Positioned(
-                  bottom: 0.h,
-                    height: 50.h,
-                    child: Container(
-                      padding: EdgeInsets.only(left: 15.w),
-                      width: 360.w,
-                      height: 60.h,
-                      color: AppColors.primaryBackground,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 220.w,
+      body: Obx(
+              () => SafeArea(
+                  child: ConstrainedBox(
+                    constraints:const BoxConstraints.expand() ,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                            bottom: 0.h,
                             height: 60.h,
-                            child: TextField(
-                              keyboardType: TextInputType.multiline,
-                              maxLines: 3,
-                              controller: controller.textController,
-                              autofocus: false,
-                              focusNode: controller.contentNode,
-                              decoration: const InputDecoration(
-                                hintText: "Message"
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: 30.h,
-                            width: 30.w,
-                            margin: EdgeInsets.only(left: 20.w),
-                            child: GestureDetector(
+                            child: Container(
+                              padding: EdgeInsets.only(left: 15.w, top: 5.w),
+                              width: 360.w,
+                              height: 60.h,
+                              color: AppColors.primaryBackground,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: 225.w,
+                                    height: 50.h,
+                                    child: TextField(
+                                      keyboardType: TextInputType.multiline,
+                                      maxLines: 3,
+                                      controller: controller.textController,
+                                      autofocus: false,
+                                      focusNode: controller.contentNode,
+                                      decoration: const InputDecoration(
+                                          hintText: "Message",
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                              )
+                                          ),
+                                          disabledBorder:  OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                              )
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                              )
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 35.w,
+                                    height: 35.w,
+                                    child: Transform.rotate(
+                                      angle: 330 *math.pi /180,
+                                      child: IconButton(
+                                        icon: const Icon(Icons.send_rounded,
+                                          color: Colors.purple,
+                                          size: 30,),
+                                        onPressed: (){
+                                          controller.sendMessage();
+                                          Get.snackbar(" Message Delivered","Message Sent Successfuly!",
+                                            icon: const Icon(Icons.message_rounded),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
 
-                              child: Transform.rotate(
-                                angle: 45 *math.pi /180,
-                                child: Icon(Icons.attach_file_rounded,
-                                  color: Colors.grey.shade500,
-                                size:25.w,
+                                  Container(
+                                    height: 35.h,
+                                    width: 35.w,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(35.w),
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: Colors.grey.shade500,
+                                                spreadRadius: 0,
+                                                blurRadius: 1,
+                                                offset: const Offset(0, 1)
+                                            ),
+                                          ]
+                                      ),
+                                    margin: const EdgeInsets.only( right: 15),
+                                    child: GestureDetector(
+                                      child: Icon(Icons.add,
+                                        color: Colors.purple.shade400,
+                                        size:25.w,
+                                      ),
+                                      onTap: (){
+                                        //send Images
+                                        controller.goMore();
+                                      },
+                                    ),
+
+                                  ),
+
+
+                                ],
+                              ),
+
+
+                            )),
+                        controller.state.more_status.value?  Positioned(
+                            right: 15.w,
+                            bottom: 70.h,
+                            height: 100.h,
+                            width: 40.w,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                GestureDetector(
+                                  child: Container(
+                                    height: 40.h,
+                                    width: 40.h,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(40.w),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Colors.grey.shade200,
+                                              spreadRadius: 2,
+                                              blurRadius: 2,
+                                              offset: const Offset(1, 1)
+                                          ),
+                                        ]
+                                    ),
+                                    child: Icon(Icons.camera_alt_outlined,size: 19.sp,
+                                      color: Colors.purple.shade500,),
+                                  ),
+                                  onTap: (){
+                                    toastInfo(msg: "Camera");
+                                  },
                                 ),
-                              ),
-                              onTap: (){
-                                //send Images
-                              },
-                            ),
+                                GestureDetector(
+                                  child: Container(
+                                    height: 40.h,
+                                    width: 40.h,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(40.w),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Colors.grey.shade200,
+                                              spreadRadius: 2,
+                                              blurRadius: 2,
+                                              offset: const Offset(1, 1)
+                                          ),
+                                        ]
+                                    ),
+                                    child: Icon(Icons.photo_outlined,size: 19.sp,
+                                      color: Colors.purple.shade500,),
+                                  ),
+                                  onTap: (){
+                                    toastInfo(msg: "Gallery");
+                                  },
+                                ),
 
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: 1.w, right: 10.w),
-                            width: 35.w,
-                            height: 35.w,
-                            child: IconButton(
-                              icon: const Icon(Icons.send_rounded,
-                              color: Colors.purple,
-                              size: 30,),
-                              onPressed: (){
-                                controller.sendMessage();
-                                Get.snackbar(" Message Delivered","Message Sent Successfuly!", 
-                                    icon: const Icon(Icons.message_rounded),
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
+                              ],
+                            )):Container(),
 
-                    ))
-              ],
-            ),
+                      ],
 
-          )),
+                    ),
+
+                  ))),
     );
   }
 }

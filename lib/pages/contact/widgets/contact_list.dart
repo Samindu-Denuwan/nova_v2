@@ -17,11 +17,6 @@ class ContactList extends GetView<ContactController> {
   Widget BuildListItem(UserData item){
 
     return Container(
-
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20.h)),
-        color: Colors.white,
-      ),
       margin: EdgeInsets.only(top: 8.w, left: 8.w, right: 8.w),
       padding: EdgeInsets.only(top: 10.w, left: 10.w, right: 10.w, bottom: 10.w),
       child: InkWell(
@@ -34,13 +29,25 @@ class ContactList extends GetView<ContactController> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
+
           children: [
             Container(
               padding: EdgeInsets.only(top: 0.w, left: 0.w, right: 15.w),
-              child: SizedBox(
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(60.w),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.shade200,
+                          spreadRadius: 2,
+                          blurRadius: 2,
+                          offset: const Offset(0, 1)
+                      ),
+                    ]
+                ),
                 width: 60.w,
                 height: 60.w,
-               // child: CachedNetworkImage(imageUrl: "${item.photourl}"),
                 child: CachedNetworkImage(
                   imageUrl: "${item.photourl}",
                   imageBuilder: (context, imageProvider) => Container(
@@ -62,12 +69,14 @@ class ContactList extends GetView<ContactController> {
             Container(
               width: 240.w,
               padding: EdgeInsets.only(top: 20.w, left: 0.w, right: 0.w, bottom: 0.w),
-            //   decoration: const BoxDecoration(
-            //     border: Border(
-            //    bottom: BorderSide(width: 1, color: Color(0xffe5e5e5))
-            //   ),
-            // ),
+              decoration: const BoxDecoration(
+                border: Border(
+               bottom: BorderSide(width: 1, color: Color(0xffe5e5e5))
+              ),
+            ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     width: 200.w,
@@ -79,10 +88,16 @@ class ContactList extends GetView<ContactController> {
                       color: AppColors.thirdElement,
                       fontSize: 16.sp
                     ),),
-                  )
+                  ),
+                  Container(
+                    width: 12.w,
+                    height: 12.w,
+                    child: Icon(Icons.chevron_right),
+                  ),
                 ],
               ),
             ),
+
           ],
         ),
       ),

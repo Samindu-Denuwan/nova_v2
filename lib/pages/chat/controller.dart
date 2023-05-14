@@ -10,6 +10,10 @@ import 'state.dart';
 class ChatController extends GetxController {
   final state = ChatState();
 
+  void goMore(){
+    state.more_status.value =state.more_status.value? false:true;
+  }
+
   ChatController();
   var doc_id =null;
   final textController = TextEditingController();
