@@ -68,7 +68,7 @@ class ContactList extends GetView<ContactController> {
             ),
             Container(
               width: 240.w,
-              padding: EdgeInsets.only(top: 20.w, left: 0.w, right: 0.w, bottom: 0.w),
+              padding: EdgeInsets.only(top: 10.w, left: 0.w, right: 0.w, bottom: 0.w),
               decoration: const BoxDecoration(
                 border: Border(
                bottom: BorderSide(width: 1, color: Color(0xffe5e5e5))
@@ -83,8 +83,8 @@ class ContactList extends GetView<ContactController> {
                     height: 42.w,
                     child: Text(item.name?? "",
                     style: TextStyle(
-
-                      fontWeight: FontWeight.w400,
+                        fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
                       color: AppColors.thirdElement,
                       fontSize: 16.sp
                     ),),

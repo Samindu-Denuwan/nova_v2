@@ -53,6 +53,7 @@ dependencies:
   firebase_auth: ^4.6.0
   image_picker: ^0.8.7+5
   firebase_storage: ^11.2.0
+  pull_to_refresh: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -103,6 +104,12 @@ flutter:
           weight: 500
         - asset: assets/fonts/Montserrat-SemiBold.ttf
           weight: 600
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
     - family: Iconfont
       fonts:
         - asset: assets/fonts/iconfont.ttf
