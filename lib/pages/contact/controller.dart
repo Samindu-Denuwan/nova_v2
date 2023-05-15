@@ -24,7 +24,7 @@ class ContactController extends GetxController {
   goChat(UserData to_userdata) async{
    var from_messages = await db.collection("messages").withConverter(
         fromFirestore: Msg.fromFirestore,
-        toFirestore: (Msg msg, option)=>msg.toFirestore()).where(
+        toFirestore: (Msg msg, options)=>msg.toFirestore()).where(
       "from_uid", isEqualTo: token
     ).where(
       "to_uid", isEqualTo: to_userdata.id

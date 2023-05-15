@@ -83,6 +83,7 @@ class MessageList extends GetView<MessageController> {
                           item.data().from_uid== controller.token
                               ?item.data().to_name!
                               :item.data().from_name!,
+
                           overflow: TextOverflow.clip,
                           maxLines: 1,
                           style: TextStyle(

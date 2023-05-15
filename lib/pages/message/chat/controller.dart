@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nova_v2/common/entities/entities.dart';
 import 'package:nova_v2/common/entities/msgcontent.dart';
 import 'package:nova_v2/common/store/store.dart';
 import 'package:nova_v2/common/utils/utils.dart';
@@ -180,11 +181,28 @@ class ChatController extends GetxController {
     },
       onError: (error)=> print("Listen Failed: $error")
     );
+
+    getLocation();
+  }
+
+  getLocation() async{
+    try{
+     var user_location = await db.collection("users").where("id",isEqualTo: state.to_uid.value).withConverter(
+          fromFirestore: UserData.fromFirestore,
+          toFirestore: (UserData userdata, optons)=> userdata.toFirestore()).get();
+
+      var location = user_location.docs.first.data().location;
+      if(location!=""){
+        print("location.............: $location");
+        state.to_location.value=location??"unknown";
+      }
+    }catch(e){
+      print("We have Location Error : $e");
+    }
   }
 
   @override
   void dispose() {
-
     msgScrolling.dispose();
     listener.cancel();
     super.dispose();

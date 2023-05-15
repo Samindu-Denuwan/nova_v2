@@ -81,13 +81,13 @@ class ChatPage extends GetView<ChatController> {
                             fontWeight: FontWeight.w500,
                             fontSize: 16.sp
                           ),),
-                          Text("unknown Location",
-                            overflow: TextOverflow.clip,
-                            maxLines: 1,
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: 14.sp
-                            ),),
+                         Obx(() =>  Text(controller.state.to_location.value,
+                           overflow: TextOverflow.clip,
+                           maxLines: 1,
+                           style: TextStyle(
+                               fontWeight: FontWeight.normal,
+                               fontSize: 14.sp
+                           ),)),
 
                         ],
                       ),
