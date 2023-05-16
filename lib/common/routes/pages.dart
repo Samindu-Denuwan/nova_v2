@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nova_v2/common/middlewares/middlewares.dart';
 
 import 'package:get/get.dart';
+import 'package:nova_v2/pages/home/photoview/index.dart';
+import 'package:nova_v2/pages/profile/index.dart';
 
 import '../../pages/application/index.dart';
 import '../../pages/message/chat/index.dart';
@@ -53,15 +55,22 @@ class AppPages {
         page: () => const ChatPage(),
         binding: ChatBinding()),
 
-  //消息
-    GetPage(name: AppRoutes.Message, page: () => const MessagePage(), binding: MessageBinding()),
-    /*
-  //我的
-    GetPage(name: AppRoutes.Me, page: () => MePage(), binding: MeBinding()),
+    //消息
+    GetPage(
+        name: AppRoutes.Message,
+        page: () => const MessagePage(),
+        binding: MessageBinding()),
+
+    //我的
+    GetPage(
+        name: AppRoutes.Me,
+        page: () => const ProfilePage(),
+        binding: ProfileBinding()),
     //聊天详情
 
-
-
-    GetPage(name: AppRoutes.Photoimgview, page: () => PhotoImgViewPage(), binding: PhotoImgViewBinding()),*/
+    GetPage(
+        name: AppRoutes.Photoimgview,
+        page: () => const PhotoImageViewPage(),
+        binding: PhotoImageViewBinding()),
   ];
 }

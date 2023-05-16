@@ -6,6 +6,7 @@ import 'package:nova_v2/common/store/store.dart';
 import 'package:nova_v2/common/utils/http.dart';
 import 'state.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 
 
@@ -25,6 +26,7 @@ class MessageController extends GetxController {
   void onReady() {
     super.onReady();
     getUserLocation();
+    getFcmToken();
   }
 
 
@@ -95,6 +97,18 @@ class MessageController extends GetxController {
  }
 
 
+ getFcmToken()async{
+   final fcmToken = await FirebaseMessaging.instance.getToken();
+   if(fcmToken!=null){
+    var user = await db.collection("users").where("id", isEqualTo: token).get();
+    if(user.docs.isNotEmpty){
+      var doc_id = user.docs.first.id;
+      await db.collection("users").doc(doc_id).update({
+                "fcmtoken":fcmToken
+      });
+    }
+   }
+ }
 
 
 }

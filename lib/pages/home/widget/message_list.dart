@@ -14,7 +14,21 @@ class MessageList extends GetView<MessageController> {
 
   Widget messageListItem(QueryDocumentSnapshot<Msg> item){
     return Container(
-      padding: EdgeInsets.only(top: 10.w,left: 15.w, right: 15.w ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15.w),
+        color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.shade200,
+                spreadRadius: 2,
+                blurRadius: 2,
+                offset: const Offset(0, 1)
+            ),
+          ]
+
+      ),
+      margin: EdgeInsets.only(top: 8.w,left:8.w, right: 8.w),
+      padding: EdgeInsets.only(top: 10.w,left: 10.w, right: 10.w, bottom: 10.w ),
       child: InkWell(
         onTap: (){
           var to_uid = "";
@@ -42,7 +56,7 @@ class MessageList extends GetView<MessageController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(top: 0.w,left: 5.w, right: 15.w ),
+              padding: EdgeInsets.only(top: 0.w,left: 5.w, right: 10.w ),
               child: SizedBox(
                 width: 54.w,
                 height: 54.w,
@@ -55,7 +69,16 @@ class MessageList extends GetView<MessageController> {
                       width: 54.w,
                       height: 54.w,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(54)),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.shade200,
+                                spreadRadius: 2,
+                                blurRadius: 2,
+                                offset: const Offset(0, 1)
+                            ),
+                          ],
+                        borderRadius: const BorderRadius.all(Radius.circular(54),
+                        ),
                         image: DecorationImage(
                             image: imageProvider,
                         fit: BoxFit.cover)
@@ -90,7 +113,7 @@ class MessageList extends GetView<MessageController> {
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
                             color: AppColors.thirdElement,
-                            fontSize: 16.sp
+                            fontSize: 15.sp
 
                           ),
                         ),
@@ -127,7 +150,7 @@ class MessageList extends GetView<MessageController> {
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.normal,
                               color: AppColors.thirdElementText,
-                              fontSize: 11.sp
+                              fontSize: 10.sp
 
                           ),
                         ),

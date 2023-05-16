@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:nova_v2/common/values/values.dart';
 import 'package:nova_v2/pages/contact/index.dart';
 import 'package:nova_v2/pages/home/index.dart';
+import 'package:nova_v2/pages/profile/index.dart';
 
 import 'controller.dart';
 
@@ -17,8 +18,7 @@ class ApplicationPage extends GetView<ApplicationController> {
       children: const[
         MessagePage(),
         ContactPage(),
-
-        Center(child: Text("Profile")),
+        ProfilePage()
       ],
 
     );
