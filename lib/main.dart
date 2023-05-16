@@ -3,6 +3,7 @@ import 'package:nova_v2/common/routes/pages.dart';
 import 'package:get/get.dart';
 import 'package:nova_v2/common/services/services.dart';
 import 'package:nova_v2/common/store/config.dart';
+import 'package:nova_v2/common/style/style.dart';
 import 'common/store/store.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,10 +34,7 @@ class MyApp extends StatelessWidget {
       builder: ( context, child) =>GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-
-          primarySwatch: Colors.blue,
-        ),
+        theme: AppTheme.light,
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
 

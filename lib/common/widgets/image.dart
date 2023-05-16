@@ -16,6 +16,7 @@ Widget netImageCached(
       width: width.w,
       margin: margin,
       decoration: BoxDecoration(
+
         borderRadius: Radii.k54pxRadius,
         image: DecorationImage(
           image: imageProvider,

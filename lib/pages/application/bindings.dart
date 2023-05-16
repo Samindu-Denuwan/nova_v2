@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:nova_v2/pages/home/controller.dart';
+import 'package:nova_v2/pages/profile/index.dart';
 
 import '../contact/controller.dart';
 import 'controller.dart';
@@ -11,6 +12,7 @@ class ApplicationBinding implements Bindings{
     Get.lazyPut<ApplicationController>(() => ApplicationController());
     Get.lazyPut<ContactController>(() => ContactController());
     Get.lazyPut<MessageController>(() => MessageController());
+    Get.lazyPut<ProfileController>(() => ProfileController());
 
 
   }
